@@ -297,7 +297,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
                                                                        self.view.frame.size.width, 44.f)];
     _deleteBar.backgroundColor = [UIColor whiteColor];
     
-    UIImage *deleteImage = [UIImage imageForResourcePath:@"MWPhotoBrowser.bundle/icons8" ofType:@"png" inBundle:[NSBundle bundleForClass:[self class]]];
+    UIImage *deleteImage = [UIImage imageNamed:@"icons8"];
     UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithImage:deleteImage style:UIBarButtonItemStylePlain target:self action:@selector(showActionSheet)];
     
     UIBarButtonItem *spaceButton =
@@ -1164,7 +1164,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
                                                    handler:^(UIAlertAction * _Nonnull action) {
                                                    }];
     
-    UIAlertAction *delete = [UIAlertAction actionWithTitle:NSLocalizedString(@"Take photo", nil)
+    UIAlertAction *delete = [UIAlertAction actionWithTitle:@"Удалить"
                                                    style:UIAlertActionStyleDestructive
                                                  handler:^(UIAlertAction * _Nonnull action) {
                                                      if ([self.delegate respondsToSelector:@selector(deleteButtonTapped)] ) {
