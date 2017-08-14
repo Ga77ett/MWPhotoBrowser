@@ -300,7 +300,11 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     UIImage *deleteImage = [UIImage imageForResourcePath:[NSString stringWithFormat:@"icon8"] ofType:@"pdf" inBundle:[NSBundle bundleForClass:[self class]]];
     UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithImage:deleteImage style:UIBarButtonItemStylePlain target:self action:@selector(showActionSheet)];
     
-    [deleteBar setItems:@[fixedSpace, deleteButton, fixedSpace]];
+    UIBarButtonItem *spaceButton =
+    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                  target:nil action:nil];
+    
+    [deleteBar setItems:@[spaceButton, deleteButton, spaceButton]];
     
     [self.view addSubview:deleteBar];
     
