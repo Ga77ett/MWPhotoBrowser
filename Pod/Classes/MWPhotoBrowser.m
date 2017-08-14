@@ -293,6 +293,11 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     [self tilePages];
     _performingLayout = NO;
     
+    UIToolbar *deleteBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 44.f,
+                                                                       self.vie.frame.size.width, 44.f)];
+    deleteBar.backgroundColor = [UIColor redColor];
+    [self.view addSubview:deleteBar];
+    
 }
 
 // Release any retained subviews of the main view.
