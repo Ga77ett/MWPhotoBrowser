@@ -294,8 +294,14 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     _performingLayout = NO;
     
     UIToolbar *deleteBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 44.f,
-                                                                       self.vie.frame.size.width, 44.f)];
-    deleteBar.backgroundColor = [UIColor redColor];
+                                                                       self.view.frame.size.width, 44.f)];
+    deleteBar.backgroundColor = [UIColor whiteColor];
+    
+    UIImage *deleteImage = [UIImage imageForResourcePath:[NSString stringWithFormat:@"icon8"] ofType:@"pdf" inBundle:[NSBundle bundleForClass:[self class]]];
+    UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithImage:deleteImage style:UIBarButtonItemStylePlain target:self action:@selector(showActionSheet)];
+    
+    [deleteBar setItems:@[deleteButton]];
+    
     [self.view addSubview:deleteBar];
     
 }
@@ -1144,6 +1150,28 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
 }
 - (void)gotoNextPage {
     [self showNextPhotoAnimated:NO];
+}
+
+- (void)showActionSheet {
+    UIAlertController *alertController = [[UIAlertController alloc] init];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Отмена"
+                                                     style:UIAlertActionStyleCancel
+                                                   handler:^(UIAlertAction * _Nonnull action) {
+                                                   }];
+    
+    UIAlertAction *delete = [UIAlertAction actionWithTitle:NSLocalizedString(@"Take photo", nil)
+                                                   style:UIAlertActionStyleDestructive
+                                                 handler:^(UIAlertAction * _Nonnull action) {
+                                                     if ([self.delegate respondsToSelector:@selector(deleteButtonTapped)] ) {
+                                                         [self.delegate deleteButtonTapped];
+                                                     }
+                                                 }];
+    
+    [alertController addAction:cancel];
+    [alertController addAction:delete];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)showPreviousPhotoAnimated:(BOOL)animated {
