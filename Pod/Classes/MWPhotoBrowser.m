@@ -297,7 +297,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
                                                                        self.view.frame.size.width, 44.f)];
     _deleteBar.backgroundColor = [UIColor whiteColor];
     
-    UIImage *deleteImage = [UIImage imageNamed:@"icons8.pdf"];
+    UIImage *deleteImage = [UIImage imageForResourcePath:@"MWPhotoBrowser.bundle/Icons8" ofType:@"pdf" inBundle:[NSBundle bundleForClass:[self class]]];
     UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithImage:deleteImage style:UIBarButtonItemStylePlain target:self action:@selector(showActionSheet)];
     
     UIBarButtonItem *spaceButton =
