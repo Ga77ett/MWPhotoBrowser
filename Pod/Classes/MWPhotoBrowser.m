@@ -74,6 +74,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     _enableGrid = YES;
     _startOnGrid = NO;
     _enableSwipeToDismiss = YES;
+    _showDeleteButton = NO;
     _delayToHideElements = 5;
     _visiblePages = [[NSMutableSet alloc] init];
     _recycledPages = [[NSMutableSet alloc] init];
@@ -293,21 +294,22 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     [self tilePages];
     _performingLayout = NO;
     
-    _deleteBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 44.f,
-                                                                       self.view.frame.size.width, 44.f)];
-    _deleteBar.backgroundColor = [UIColor whiteColor];
-    
-    UIImage *deleteImage = [UIImage imageNamed:@"icons8"];
-    UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithImage:deleteImage style:UIBarButtonItemStylePlain target:self action:@selector(showActionSheet)];
-    
-    UIBarButtonItem *spaceButton =
-    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                                  target:nil action:nil];
-    
-    [_deleteBar setItems:@[spaceButton, deleteButton, spaceButton]];
-    
-    [self.view addSubview:_deleteBar];
-    
+    if (self.showDeleteButton) {
+        _deleteBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 44.f,
+                                                                 self.view.frame.size.width, 44.f)];
+        _deleteBar.backgroundColor = [UIColor whiteColor];
+        
+        UIImage *deleteImage = [UIImage imageNamed:@"icons8"];
+        UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithImage:deleteImage style:UIBarButtonItemStylePlain target:self action:@selector(showActionSheet)];
+        
+        UIBarButtonItem *spaceButton =
+        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                      target:nil action:nil];
+        
+        [_deleteBar setItems:@[spaceButton, deleteButton, spaceButton]];
+        
+        [self.view addSubview:_deleteBar];
+    }
 }
 
 // Release any retained subviews of the main view.
