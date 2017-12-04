@@ -462,7 +462,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     //navBar.tintColor = [UIColor whiteColor];
     navBar.barTintColor = nil;
     navBar.shadowImage = nil;
-    navBar.translucent = YES;
+    navBar.translucent = NO;
     navBar.barStyle = UIBarStyleDefault;
     navBar.topItem.title = @"";
     [navBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
