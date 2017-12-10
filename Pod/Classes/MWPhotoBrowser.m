@@ -295,7 +295,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     _performingLayout = NO;
     
     if (self.showDeleteButton) {
-        _deleteBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 44.f,
+        _deleteBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 108.f,
                                                                  self.view.frame.size.width, 44.f)];
         _deleteBar.backgroundColor = [UIColor whiteColor];
         
